@@ -104,7 +104,7 @@
 }
 
 .start-btn:hover {
-  background: #7043b5;
+  background: var(--neutral-charcoal);
 }
 
 /* =========================
@@ -243,7 +243,7 @@
   }
 
   .mobile-start:hover {
-    background: #7043b5;
+    background: var(--neutral-charcoal);
   }
 }
 

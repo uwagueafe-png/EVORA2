@@ -48,7 +48,7 @@ function SessionDetails() {
       if (!response.ok) throw new Error("Reservation failed.");
       setReserved(true);
     } catch {
-      setReservationError("We could not reserve your spot. Please try again.");
+      setReservationError("Could not reserve your spot. Please try again.");
     } finally {
       setReserving(false);
     }

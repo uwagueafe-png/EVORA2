@@ -52,6 +52,14 @@
   ],
   "contactMessages": [],
   "tutorApplications": [],
-  "sessionReservations": [],
+  "sessionReservations": [
+    {
+      "sessionId": 1,
+      "sessionTitle": "AI for Beginners",
+      "instructor": "Deborah Dominion",
+      "reservedAt": "2026-09-23T13:54:15.038Z",
+      "id": "eLcdJBb7lI8"
+    }
+  ],
   "$schema": "./node_modules/json-server/schema.json"
 }
