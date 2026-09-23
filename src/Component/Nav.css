@@ -1,0 +1,272 @@
+.navbar {
+  width: 100%;
+  height: 80px;
+  padding: 0 7%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #ffffff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  border-bottom: 1px solid var(--neutral-line);
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: 800;
+  color: #000;
+  letter-spacing: 1px;
+}
+
+/* =========================
+   DESKTOP LINKS
+========================= */
+
+.nav-links {
+  display: flex;
+  gap: 35px;
+}
+
+.nav-links a {
+  color: var(--neutral-muted);
+  font-size: 14px;
+  position: relative;
+  transition: 0.3s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--neutral-ink);
+}
+
+.nav-links a.active {
+  font-weight: 700;
+}
+
+.nav-links a.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -10px;
+  height: 2px;
+  background: var(--neutral-ink);
+}
+
+/* =========================
+   DESKTOP ACTIONS
+========================= */
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav-actions > a:not(.start-btn) {
+  color: var(--neutral-ink);
+  font-size: 14px;
+}
+
+.nav-actions > a:not(.start-btn):hover {
+  color: var(--neutral-charcoal);
+}
+
+.login {
+  color: #000;
+  font-size: 14px;
+}
+
+.nav-actions button {
+  background: none;
+  border: none;
+  color: #000;
+  font-family: inherit;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 0;
+}
+
+.nav-actions button:hover {
+  color: #0000;
+}
+
+.start-btn {
+  padding: 11px 20px;
+  background: #000;
+  color: white;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.start-btn:hover {
+  background: #7043b5;
+}
+
+/* =========================
+   HAMBURGER
+========================= */
+
+.hamburger {
+  display: none;
+  background: transparent;
+  border: none;
+  color: #160828;
+  font-size: 25px;
+  cursor: pointer;
+  padding: 5px;
+}
+
+/* =========================
+   MOBILE MENU
+========================= */
+
+.mobile-menu {
+  display: none;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 768px) {
+
+  .navbar {
+    height: 70px;
+    padding: 0 6%;
+  }
+
+  .logo {
+    font-size: 22px;
+  }
+
+  .nav-links,
+  .nav-actions {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .mobile-menu {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background: #ffffff;
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 25px 6% 30px;
+
+    border-bottom: 1px solid #eeeaf8;
+
+    transform: translateY(-15px);
+    opacity: 0;
+    visibility: hidden;
+
+    transition:
+      opacity 0.25s ease,
+      transform 0.25s ease,
+      visibility 0.25s ease;
+  }
+
+  .mobile-menu.open {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .mobile-menu > a {
+    padding: 12px 0;
+    color: #6f6a7d;
+    font-size: 15px;
+    transition: 0.2s;
+  }
+
+  .mobile-menu > a:hover,
+  .mobile-menu > a.active {
+    color: var(--neutral-ink);
+  }
+
+  .mobile-menu > a.active {
+    font-weight: 700;
+    border-left: 3px solid var(--neutral-ink);
+    padding-left: 12px;
+  }
+
+  /* =========================
+     MOBILE ACTIONS
+  ========================= */
+
+  .mobile-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 15px;
+    padding-top: 20px;
+    border-top: 1px solid #eeeaf8;
+  }
+
+  .mobile-login {
+    text-align: center;
+    color: #000;
+    padding: 11px;
+    font-size: 14px;
+    background: none;
+    border: none;
+    font-family: inherit;
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  .mobile-login:hover {
+    color: #000;
+  }
+
+  .mobile-start {
+    text-align: center;
+    padding: 12px 20px;
+    background: #000;
+    color: #ffffff;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .mobile-start:hover {
+    background: #7043b5;
+  }
+}
+
+/* =========================
+   SMALL PHONES
+========================= */
+
+@media (max-width: 400px) {
+
+  .navbar {
+    padding: 0 5%;
+  }
+
+  .logo {
+    font-size: 21px;
+  }
+
+  .hamburger {
+    font-size: 23px;
+  }
+
+  .mobile-menu {
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+}

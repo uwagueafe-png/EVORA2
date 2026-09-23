@@ -1,0 +1,455 @@
+
+/* =========================
+   PATHS PAGE
+========================= */
+
+.paths-page {
+  min-height: 100vh;
+  background: #f1f1fb;
+  color: #160828;
+  padding: 120px 7% 80px;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.paths-hero {
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.paths-label {
+  color: #9866db;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  margin-bottom: 16px;
+}
+
+.paths-hero h1 {
+  font-size: 48px;
+  line-height: 1.1;
+  margin: 0 0 18px;
+}
+
+.paths-intro {
+  max-width: 600px;
+  margin: 0 auto;
+  color: #6f4da9;
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+
+/* =========================
+   AGE SELECTOR
+========================= */
+
+.age-selector {
+  max-width: 600px;
+  margin: 55px auto 60px;
+  padding: 6px;
+  display: flex;
+  gap: 6px;
+  background: #ffffff;
+  border: 1px solid #d5d1f6;
+  border-radius: 50px;
+}
+
+.age-option {
+  flex: 1;
+  border: none;
+  background: transparent;
+  color: #6f4da9;
+  padding: 13px 20px;
+  border-radius: 40px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.age-option:hover {
+  background: #f1f1fb;
+}
+
+.age-option.active {
+  background: #9866db;
+  color: #ffffff;
+}
+
+
+/* =========================
+   MAIN PATH CONTAINER
+========================= */
+
+.path-section {
+  max-width: 1150px;
+  margin: 0 auto;
+  padding: 50px;
+  background: #ffffff;
+  border: 1px solid #d5d1f6;
+  border-radius: 30px;
+}
+
+
+/* =========================
+   PATH INTRO
+========================= */
+
+.path-age {
+  display: inline-block;
+  padding: 8px 14px;
+  border-radius: 30px;
+  background: #f1f1fb;
+  color: #9866db;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  margin-bottom: 18px;
+}
+
+.path-section h2 {
+  font-size: 38px;
+  margin: 0 0 14px;
+}
+
+.path-description {
+  max-width: 700px;
+  margin: 0;
+  color: #6f4da9;
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+
+/* =========================
+   SKILLS
+========================= */
+
+.skills-section {
+  margin-top: 45px;
+  padding-top: 35px;
+  border-top: 1px solid #e4e1f4;
+}
+
+.skills-section h3,
+.path-courses h3 {
+  font-size: 21px;
+  margin: 0;
+}
+
+.skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.skill-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 10px 15px;
+  background: #f1f1fb;
+  border: 1px solid #d5d1f6;
+  border-radius: 30px;
+  color: #4f3c69;
+  font-size: 14px;
+}
+
+
+/* =========================
+   COURSES SECTION
+========================= */
+
+.path-courses {
+  margin-top: 50px;
+  padding-top: 35px;
+  border-top: 1px solid #e4e1f4;
+}
+
+.section-heading {
+  margin-bottom: 25px;
+}
+
+.section-heading p {
+  margin-top: 8px;
+  color: #7b6a91;
+  line-height: 1.6;
+}
+
+
+/* =========================
+   COURSE GRID
+========================= */
+
+.path-course-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.path-course-card {
+  display: flex;
+  flex-direction: column;
+  padding: 25px;
+  background: #ffffff;
+  border: 1px solid #ddd9ef;
+  border-radius: 22px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.path-course-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(22, 8, 40, 0.08);
+}
+
+
+/* =========================
+   COURSE CONTENT
+========================= */
+
+.course-category {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  width: fit-content;
+  margin-bottom: 14px;
+  color: #9866db;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.course-category svg,
+.skill-pill svg,
+.course-meta svg,
+.path-course-btn svg,
+.paths-cta button svg {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+  stroke-width: 2.2;
+}
+
+.path-course-card h4 {
+  font-size: 21px;
+  margin: 0 0 12px;
+}
+
+.course-description {
+  color: #6f4da9;
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+
+/* =========================
+   COURSE META
+========================= */
+
+.course-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  padding: 15px 0;
+  border-top: 1px solid #eeeaf7;
+  border-bottom: 1px solid #eeeaf7;
+}
+
+.course-meta span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #4f3c69;
+  font-size: 13px;
+}
+
+
+/* =========================
+   COURSE TOPICS
+========================= */
+
+.course-topics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin: 18px 0 25px;
+}
+
+.course-topics span {
+  padding: 6px 9px;
+  background: #f1f1fb;
+  border-radius: 8px;
+  color: #6f4da9;
+  font-size: 11px;
+}
+
+
+/* =========================
+   COURSE BUTTON
+========================= */
+
+.path-course-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  margin-top: auto;
+  padding: 12px 18px;
+  border: none;
+  border-radius: 12px;
+  background: #9866db;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.path-course-btn:hover {
+  background: #6f4da9;
+  transform: translateY(-2px);
+}
+
+
+/* =========================
+   NEXT PATH
+========================= */
+
+.next-path {
+  margin-top: 50px;
+  padding: 30px;
+  background: #f1f1fb;
+  border-radius: 20px;
+  text-align: center;
+}
+
+.next-path p {
+  margin: 0 0 8px;
+  color: #9866db;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.next-path h3 {
+  margin: 0 0 8px;
+  font-size: 24px;
+}
+
+.next-path span {
+  color: #6f4da9;
+  font-size: 14px;
+}
+
+
+/* =========================
+   FINAL CTA
+========================= */
+
+.paths-cta {
+  max-width: 700px;
+  margin: 70px auto 0;
+  text-align: center;
+}
+
+.paths-cta h2 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.paths-cta p {
+  color: #6f4da9;
+  line-height: 1.6;
+  margin-bottom: 25px;
+}
+
+.paths-cta button {
+  border: none;
+  padding: 14px 25px;
+  border-radius: 12px;
+  background: #9866db;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.paths-cta button:hover {
+  background: #6f4da9;
+  transform: translateY(-2px);
+}
+
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 950px) {
+  .path-course-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .path-section {
+    padding: 40px;
+  }
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 650px) {
+  .paths-page {
+    padding: 100px 5% 60px;
+  }
+
+  .paths-hero h1 {
+    font-size: 36px;
+  }
+
+  .paths-intro {
+    font-size: 16px;
+  }
+
+  .age-selector {
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+
+  .age-option {
+    padding: 11px 8px;
+    font-size: 13px;
+  }
+
+  .path-section {
+    padding: 28px 22px;
+    border-radius: 24px;
+  }
+
+  .path-section h2 {
+    font-size: 30px;
+  }
+
+  .path-description {
+    font-size: 15px;
+  }
+
+  .path-course-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .paths-cta h2 {
+    font-size: 27px;
+  }
+}
+

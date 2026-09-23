@@ -1,0 +1,57 @@
+{
+  "users": [
+    {
+      "name": "divine",
+      "age": "20",
+      "email": "daniella.uwague@gmail.com",
+      "password": "debbie-2006",
+      "id": "f6ANHlFVXYU"
+    },
+    {
+      "name": "sarah",
+      "age": "16",
+      "email": "daniella.uwague@gmail.com",
+      "password": "123456",
+      "id": "Qkc2tcW9Ebc"
+    },
+    {
+      "name": "daniella",
+      "age": "7",
+      "email": "daniell.uwague@gmail.com",
+      "password": "dee",
+      "id": "8B8bl4mVfi0"
+    },
+    {
+      "name": "sarah",
+      "age": "8",
+      "email": "SarahJoseph@gmail.com",
+      "password": "1234567889",
+      "id": "iy4tdo3Pk60"
+    },
+    {
+      "name": "sarah",
+      "age": "6",
+      "email": "SarahJoseh@gmail.com",
+      "password": "1234567889",
+      "id": "sPmkBR6Xm8E"
+    },
+    {
+      "name": "favour",
+      "age": 9,
+      "email": "dacuna@gmail.com",
+      "password": "Favvy-25",
+      "id": "raXeRs-LVE0"
+    },
+    {
+      "name": "emmanuel osayomwabor",
+      "age": 8,
+      "email": "emmanuelosa@gmail.com",
+      "password": "Emma1256",
+      "id": "UCYtO3YLpVc"
+    }
+  ],
+  "contactMessages": [],
+  "tutorApplications": [],
+  "sessionReservations": [],
+  "$schema": "./node_modules/json-server/schema.json"
+}

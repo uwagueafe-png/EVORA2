@@ -1,0 +1,194 @@
+/* =========================
+   LOGIN PAGE
+========================= */
+
+.login-page {
+  min-height: 100vh;
+  background: var(--neutral-canvas);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 132px 20px 64px;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 520px;
+  background: var(--neutral-surface);
+  padding: 44px;
+  border-radius: 10px;
+  border: 1px solid var(--neutral-line);
+  box-shadow: 0 18px 50px rgba(17, 17, 17, 0.07);
+}
+
+.login-header {
+  text-align: left;
+  margin-bottom: 34px;
+}
+
+.login-header h1 {
+  font-size: clamp(28px, 4vw, 36px);
+  line-height: 1.1;
+  font-weight: 700;
+  color: var(--neutral-ink);
+  margin-bottom: 10px;
+}
+
+.login-header p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--neutral-muted);
+}
+
+/* =========================
+   FORM
+========================= */
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--neutral-ink);
+}
+
+.form-group input {
+  width: 100%;
+  height: 52px;
+  padding: 0 16px;
+  border: 1px solid var(--neutral-line);
+  border-radius: 8px;
+  background: var(--neutral-surface);
+  color: var(--neutral-ink);
+  font-size: 15px;
+  outline: none;
+  transition: 0.2s ease;
+}
+
+.form-group input::placeholder {
+  color: var(--neutral-muted);
+}
+
+.form-group input:focus {
+  border-color: #2b2b2b;
+  box-shadow: 0 0 0 4px rgba(17, 17, 17, 0.12);
+}
+
+.password-input-wrapper {
+  position: relative;
+}
+
+.password-input-wrapper input {
+  padding-right: 50px;
+}
+
+.password-toggle {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--neutral-muted);
+  cursor: pointer;
+  transform: translateY(-50%);
+}
+
+.password-toggle:hover,
+.password-toggle:focus-visible {
+  background: var(--neutral-band);
+  color: var(--neutral-ink);
+}
+
+.password-toggle svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* =========================
+   BUTTON
+========================= */
+
+.login-button {
+  width: 100%;
+  height: 52px;
+  margin-top: 6px;
+  border: none;
+  border-radius: 10px;
+  background: var(--neutral-ink);
+  color: var(--neutral-surface);
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.login-button:hover {
+  background: var(--neutral-charcoal);
+  transform: translateY(-1px);
+}
+
+.login-button:active {
+  transform: translateY(0);
+}
+
+/* =========================
+   SIGN UP LINK
+========================= */
+
+.login-signup {
+  text-align: center;
+  margin-top: 24px;
+  font-size: 14px;
+  color: var(--neutral-muted);
+}
+
+.login-signup a {
+  color: var(--neutral-ink);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.login-signup a:hover {
+  text-decoration: underline;
+}
+.login-error {
+  margin-top: -4px;
+  color: #d64545;
+  font-size: 14px;
+  text-align: center;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+  .login-page {
+    padding: 108px 16px 36px;
+  }
+
+  .login-card {
+    padding: 30px 22px;
+    border-radius: 8px;
+  }
+
+  .login-header h1 {
+    font-size: 27px;
+  }
+}

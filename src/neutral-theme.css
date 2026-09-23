@@ -1,0 +1,252 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap");
+
+:root {
+  --neutral-ink: #111111;
+  --neutral-charcoal: #2b2b2b;
+  --neutral-muted: #686868;
+  --neutral-canvas: #f7f7f7;
+  --neutral-band: #ededed;
+  --neutral-subtle: #fafafa;
+  --neutral-surface: #ffffff;
+  --neutral-line: #e2e2e2;
+  --action-radius: 10px;
+}
+
+body {
+  font-family: "Manrope", sans-serif !important;
+  background: var(--neutral-canvas) !important;
+  color: var(--neutral-ink) !important;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+button,
+strong {
+  font-weight: 700;
+}
+
+.hero,
+.courses-page,
+.paths-page,
+.about-page,
+.live-page,
+.projects-page,
+.course-details-page,
+.project-details-page,
+.session-details-page,
+.contact-page,
+.login-page,
+.signup-page {
+  background: var(--neutral-canvas) !important;
+  color: var(--neutral-ink) !important;
+}
+
+.hero {
+  background: var(--neutral-surface) !important;
+}
+
+.featured-section,
+.home-live,
+.testimonial-section,
+.next-path,
+.paths-page .path-age,
+.skill-pill,
+.course-topics span,
+.course-level,
+.badge-icon,
+.category-0,
+.category-1,
+.category-2 {
+  background: var(--neutral-band) !important;
+}
+
+.path-age,
+.skill-pill,
+.course-topics span,
+.course-level,
+.badge-icon,
+.category-0,
+.category-1,
+.category-2 {
+  background: var(--neutral-subtle) !important;
+}
+
+.hero-label,
+.changing-word,
+.courses-label,
+.paths-label,
+.path-age,
+.course-category,
+.course-level,
+.course-bottom,
+.course-bottom a,
+.courses-header h2 span,
+.all-courses-btn,
+.home-live-label,
+.home-live-date,
+.home-live-button,
+.about-label,
+.section-number,
+.live-label,
+.projects-label,
+.learning-heading > span,
+.next-path p {
+  color: var(--neutral-charcoal) !important;
+}
+
+.hero-content p,
+.courses-intro,
+.paths-intro,
+.path-description,
+.course-description,
+.about-description,
+.section-content p,
+.home-live-header p,
+.home-live-content p,
+.courses-header p,
+.learning-card p,
+.course-content p,
+.session-instructor,
+.project-description,
+.login-header p,
+.signup-header p,
+.login-signup,
+.signup-login {
+  color: var(--neutral-muted) !important;
+}
+
+.hero-image,
+.image-badge,
+.learning-card,
+.course-card,
+.home-live-card,
+.session-card,
+.project-card,
+.path-section,
+.path-course-card,
+.login-card,
+.signup-card,
+.info-item,
+.age-selector {
+  background: var(--neutral-surface) !important;
+  border-color: var(--neutral-line) !important;
+}
+
+.primary-btn,
+.start-btn,
+.path-course-btn,
+.start-learning-btn,
+.login-button,
+.signup-button,
+.join-button,
+.paths-cta button {
+  border-radius: var(--action-radius) !important;
+  background: var(--neutral-ink) !important;
+  color: var(--neutral-surface) !important;
+}
+
+.secondary-btn {
+  border-radius: var(--action-radius) !important;
+  background: var(--neutral-surface) !important;
+  color: var(--neutral-ink) !important;
+}
+
+.join-button {
+  width: 100% !important;
+  min-width: 0;
+  padding-inline: 24px;
+}
+
+.primary-btn:hover,
+.path-course-btn:hover,
+.start-learning-btn:hover,
+.login-button:hover,
+.signup-button:hover,
+.join-button:hover {
+  background: var(--neutral-charcoal) !important;
+}
+
+.age-option,
+.back-button,
+.view-all-live,
+.learn-btn,
+.home-live-button,
+.login-signup a,
+.signup-login a {
+  color: var(--neutral-ink) !important;
+}
+
+.form-group input,
+.age-selector,
+.age-option.active {
+  border-color: var(--neutral-line) !important;
+}
+
+.age-option.active {
+  background: var(--neutral-ink) !important;
+  color: var(--neutral-surface) !important;
+}
+
+.age-option:hover,
+.secondary-btn:hover {
+  background: var(--neutral-band) !important;
+}
+
+.course-icon {
+  background: var(--neutral-subtle) !important;
+  border: 1px solid var(--neutral-line);
+  color: var(--neutral-ink) !important;
+}
+
+.hero-dot.active {
+  background: var(--neutral-charcoal) !important;
+}
+
+.hero-dot {
+  background: #c7c7c7 !important;
+}
+
+.footer-links a:hover {
+  color: #bdbdbd !important;
+}
+
+.form-group input:focus {
+  border-color: var(--neutral-charcoal) !important;
+  box-shadow: 0 0 0 4px rgba(17, 17, 17, 0.12) !important;
+}
+
+.login-header h1,
+.signup-header h1,
+.form-group label,
+.form-group input {
+  color: var(--neutral-ink) !important;
+}
+
+.login-page,
+.signup-page {
+  background: var(--neutral-canvas) !important;
+}
+
+.login-card,
+.signup-card {
+  border-color: var(--neutral-line) !important;
+  box-shadow: 0 15px 45px rgba(17, 17, 17, 0.08) !important;
+}
+
+.footer {
+  background: var(--neutral-ink) !important;
+  color: var(--neutral-surface) !important;
+}

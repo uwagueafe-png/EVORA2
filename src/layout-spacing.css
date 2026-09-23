@@ -1,0 +1,127 @@
+:root {
+  --page-gutter: clamp(20px, 7vw, 112px);
+  --page-top: clamp(96px, 10vw, 140px);
+  --page-bottom: clamp(56px, 8vw, 96px);
+  --section-space: clamp(56px, 8vw, 96px);
+  --content-gap: clamp(20px, 3vw, 32px);
+}
+
+.hero {
+  padding: var(--page-top) var(--page-gutter) var(--page-bottom) !important;
+}
+
+.courses-page,
+.paths-page,
+.about-page,
+.projects-page,
+.course-details-page,
+.login-page,
+.signup-page {
+  padding-inline: var(--page-gutter) !important;
+  padding-top: var(--page-top) !important;
+  padding-bottom: var(--page-bottom) !important;
+}
+
+.live-page {
+  margin: 0 auto !important;
+  padding: 96px var(--page-gutter) var(--page-bottom) !important;
+}
+
+.live-hero {
+  margin: 0 auto clamp(40px, 6vw, 64px) !important;
+}
+
+.courses-section,
+.home-live,
+.testimonial-section {
+  padding: var(--section-space) var(--page-gutter) !important;
+}
+
+.course-group,
+.course-learning {
+  margin-bottom: var(--section-space);
+}
+
+.course-details-hero,
+.course-learning,
+.live-sessions-container,
+.projects-grid,
+.about-sections {
+  width: 100%;
+  max-width: 1150px;
+  margin-inline: auto;
+}
+
+.course-details-hero,
+.course-learning {
+  margin-top: 0;
+}
+
+.course-details-page {
+  padding-top: clamp(96px, 8vw, 116px) !important;
+}
+
+.course-details-hero {
+  gap: clamp(32px, 5vw, 56px);
+}
+
+.course-learning {
+  margin-top: clamp(64px, 8vw, 96px) !important;
+  margin-bottom: 0;
+}
+
+.path-section,
+.login-card,
+.signup-card {
+  padding: clamp(24px, 4vw, 50px) !important;
+}
+
+.age-selector {
+  margin-top: var(--section-space);
+  margin-bottom: var(--section-space);
+}
+
+@media (max-width: 650px) {
+  :root {
+    --page-gutter: 20px;
+    --page-top: 92px;
+    --page-bottom: 56px;
+    --section-space: 56px;
+  }
+
+  .live-page {
+    padding-top: 84px !important;
+  }
+
+  .hero {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .hero-content,
+  .hero-image {
+    width: 100%;
+  }
+
+  .courses-header,
+  .home-live-header {
+    margin-bottom: 28px;
+  }
+
+  .course-group {
+    margin-bottom: var(--section-space);
+  }
+
+  .course-details-image {
+    width: 100%;
+    margin-inline: auto;
+  }
+
+  .course-details-page {
+    padding-top: 92px !important;
+  }
+
+  .course-learning {
+    margin-top: 56px !important;
+  }
+}
