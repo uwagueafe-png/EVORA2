@@ -15,11 +15,14 @@
 .about-page,
 .projects-page,
 .course-details-page,
-.login-page,
 .signup-page {
   padding-inline: var(--page-gutter) !important;
   padding-top: var(--page-top) !important;
   padding-bottom: var(--page-bottom) !important;
+}
+
+.login-page {
+  padding: 108px 20px 48px !important;
 }
 
 .live-page {
@@ -70,9 +73,7 @@
   margin-bottom: 0;
 }
 
-.path-section,
-.login-card,
-.signup-card {
+.path-section {
   padding: clamp(24px, 4vw, 50px) !important;
 }
 
@@ -119,6 +120,10 @@
 
   .course-details-page {
     padding-top: 92px !important;
+  }
+
+  .login-page {
+    padding: 92px 16px 36px !important;
   }
 
   .course-learning {

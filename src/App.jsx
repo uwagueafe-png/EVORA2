@@ -76,43 +76,11 @@ function ProtectedRoute({ children }) {
 }
 
 function App() {
-  // Supabase users
-  const [users, setUsers] = useState([]);
-
-  // Get users from Supabase when App loads
-  useEffect(() => {
-    async function loadUsers() {
-      const { data, error } = await supabase
-        .from("users")
-        .select("*");
-
-      if (error) {
-        console.log("Supabase Error:", error);
-      } else {
-        console.log("Users from Supabase:", data);
-        setUsers(data);
-      }
-    }
-
-    loadUsers();
-  }, []);
-
   return (
     <BrowserRouter>
       <ScrollToTop />
 
       <Nav />
-
-      {/* Temporary Supabase test */}
-      <div style={{ padding: "20px" }}>
-        <h2>Supabase Users</h2>
-
-        {users.map((user) => (
-          <p key={user.id}>
-            {user.name} - {user.age} - {user.email}
-          </p>
-        ))}
-      </div>
 
       <Routes>
         <Route path="/" element={<Home />} />
