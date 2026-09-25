@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { supabase } from "../supabaseClient";
 import "./TutorApplication.css";
 
 function TutorApplication() {
@@ -14,16 +15,16 @@ function TutorApplication() {
     const formData = new FormData(form);
 
     try {
-      const response = await fetch("http://localhost:3000/tutorApplications", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(Object.fromEntries(formData)),
-      });
-      if (!response.ok) throw new Error("Application could not be sent.");
+      const { error: insertError } = await supabase
+        .from("tutors")
+        .insert([Object.fromEntries(formData)]);
+
+      if (insertError) throw insertError;
       setSubmitted(true);
       form.reset();
-    } catch {
-      setError("We could not submit your application. Please try again.");
+    } catch (submitError) {
+      console.error("Tutor application error:", submitError);
+      setError(submitError.message || "We could not submit your application. Please try again.");
     } finally {
       setSubmitting(false);
     }

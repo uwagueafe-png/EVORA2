@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { FiEye, FiEyeOff } from "react-icons/fi";
+import { supabase } from "../src/supabaseClient";
 import "./Login.css";
 
 function Login() {
@@ -19,22 +20,17 @@ function Login() {
     setSubmitting(true);
 
     try {
-      const response = await fetch(
-        `http://localhost:3000/users?email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`
-      );
-      if (!response.ok) throw new Error("Login request failed.");
+      const { error: loginError } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
 
-      const users = await response.json();
+      if (loginError) throw loginError;
 
-      if (users.length > 0) {
-        localStorage.setItem("loggedInUser", JSON.stringify(users[0]));
-        window.dispatchEvent(new Event("evora-auth-change"));
-        navigate("/dashboard");
-      } else {
-        setError("Invalid email or password.");
-      }
-    } catch {
-      setError("We could not reach the login service. Please try again.");
+      navigate("/dashboard");
+    } catch (loginError) {
+      console.error("Login error:", loginError);
+      setError(loginError.message || "Invalid email or password.");
     } finally {
       setSubmitting(false);
     }

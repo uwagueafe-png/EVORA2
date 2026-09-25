@@ -1,6 +1,7 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import { FiMenu, FiX } from "react-icons/fi";
 import { useEffect, useState } from "react";
+import { supabase } from "../supabaseClient";
 import "./Nav.css";
 
 const Nav = () => {
@@ -12,21 +13,17 @@ const Nav = () => {
 
   const navigate = useNavigate();
 
-  const [loggedInUser, setLoggedInUser] = useState(
-    localStorage.getItem("loggedInUser")
-  );
+  const [session, setSession] = useState(null);
 
   useEffect(() => {
-    const syncAuthState = () => {
-      setLoggedInUser(localStorage.getItem("loggedInUser"));
-    };
+    supabase.auth.getSession().then(({ data }) => setSession(data.session));
 
-    window.addEventListener("storage", syncAuthState);
-    window.addEventListener("evora-auth-change", syncAuthState);
+    const { data: authListener } = supabase.auth.onAuthStateChange(
+      (_event, nextSession) => setSession(nextSession)
+    );
 
     return () => {
-      window.removeEventListener("storage", syncAuthState);
-      window.removeEventListener("evora-auth-change", syncAuthState);
+      authListener.subscription.unsubscribe();
     };
   }, []);
 
@@ -63,16 +60,14 @@ const Nav = () => {
 
       <div className="nav-actions">
 
-        {loggedInUser ? (
+        {session ? (
           <>
           <NavLink to="/dashboard">
             Dashboard
           </NavLink>
           <button
             onClick={() => {
-              localStorage.removeItem("loggedInUser");
-              setLoggedInUser(null);
-              window.dispatchEvent(new Event("evora-auth-change"));
+              supabase.auth.signOut();
               navigate("/login");
             }}
           >
@@ -132,7 +127,7 @@ const Nav = () => {
 
         <div className="mobile-actions">
 
-          {loggedInUser ? (
+          {session ? (
             <>
             <NavLink
               className="mobile-login"
@@ -144,9 +139,7 @@ const Nav = () => {
             <button
               className="mobile-login"
               onClick={() => {
-                localStorage.removeItem("loggedInUser");
-                setLoggedInUser(null);
-                window.dispatchEvent(new Event("evora-auth-change"));
+                supabase.auth.signOut();
                 closeMenu();
                 navigate("/login");
               }}

@@ -7,8 +7,6 @@ import "./SessionDetails.css";
 function SessionDetails() {
   const { sessionId } = useParams();
   const [reserved, setReserved] = useState(false);
-  const [reservationError, setReservationError] = useState("");
-  const [reserving, setReserving] = useState(false);
   const session = liveSessions.find((item) => String(item.id) === sessionId);
 
   if (!session) {
@@ -31,27 +29,8 @@ function SessionDetails() {
     .map((name) => name[0])
     .join("");
 
-  const handleReserve = async () => {
-    setReservationError("");
-    setReserving(true);
-    try {
-      const response = await fetch("http://localhost:3000/sessionReservations", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          sessionId: session.id,
-          sessionTitle: session.title,
-          instructor: session.instructor,
-          reservedAt: new Date().toISOString(),
-        }),
-      });
-      if (!response.ok) throw new Error("Reservation failed.");
-      setReserved(true);
-    } catch {
-      setReservationError("Could not reserve your spot. Please try again.");
-    } finally {
-      setReserving(false);
-    }
+  const handleReserve = () => {
+    setReserved(true);
   };
 
   return (
@@ -124,11 +103,10 @@ function SessionDetails() {
               type="button"
               className="reserve-button"
               onClick={handleReserve}
-              disabled={reserving || reserved}
+              disabled={reserved}
             >
-              {reserving ? "Reserving..." : reserved ? "Spot Reserved" : "Reserve My Spot"}
+              {reserved ? "Spot Reserved" : "Reserve My Spot"}
             </button>
-            {reservationError && <p className="reservation-error" role="alert">{reservationError}</p>}
           </div>
         </section>
       </div>

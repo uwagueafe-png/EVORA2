@@ -1,22 +1,21 @@
-import { useMemo } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { FiArrowRight, FiBookOpen, FiCalendar, FiPlay } from "react-icons/fi";
 import { liveSessions, getNextDate } from "./liveSessions";
 import { courseGroups } from "./coursesData";
+import { supabase } from "../supabaseClient";
 import "./Dashboard.css";
 
 function Dashboard() {
-  const user = useMemo(() => {
-    try {
-      return JSON.parse(localStorage.getItem("loggedInUser")) || null;
-    } catch {
-      return null;
-    }
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    supabase.auth.getUser().then(({ data }) => setUser(data.user));
   }, []);
 
-  const firstName = user?.name?.split(" ")[0] || "Learner";
+  const firstName = user?.user_metadata?.name?.split(" ")[0] || "Learner";
   const nextSession = liveSessions[0];
-  const registeredAge = Number(user?.age);
+  const registeredAge = Number(user?.user_metadata?.age);
   const ageGroup = courseGroups.find((group) => {
     const ages = group.age.match(/\d+/g)?.map(Number) || [];
     return registeredAge >= ages[0] && registeredAge <= ages[1];

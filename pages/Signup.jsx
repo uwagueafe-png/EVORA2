@@ -1,9 +1,11 @@
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { FiEye, FiEyeOff } from "react-icons/fi";
+import { supabase } from "../src/supabaseClient";
 import "./Signup.css";
 
 function Signup() {
+  const navigate = useNavigate();
   const [name, setName] = useState("");
   const [age, setAge] = useState("");
   const [email, setEmail] = useState("");
@@ -77,47 +79,24 @@ function Signup() {
     }
 
     try {
-      // CHECK IF EMAIL ALREADY EXISTS
-      const existingUserResponse = await fetch(
-        `http://localhost:3000/users?email=${email}`
-      );
-
-      if (!existingUserResponse.ok) {
-        throw new Error("Could not check existing users.");
-      }
-
-      const existingUsers = await existingUserResponse.json();
-
-      if (existingUsers.length > 0) {
-        setError("An account with this email already exists.");
-        return;
-      }
-
-      // CREATE ACCOUNT
-      const response = await fetch("http://localhost:3000/users", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+      const { data, error: signupError } = await supabase.auth.signUp({
+        email,
+        password,
+        options: {
+          data: {
+            name,
+            age: Number(age),
+          },
         },
-        body: JSON.stringify({
-          name,
-          age: Number(age),
-          email,
-          password,
-        }),
       });
 
-      if (!response.ok) {
-        throw new Error("Account could not be created.");
+      if (signupError) throw signupError;
+
+      if (data.session) {
+        navigate("/dashboard");
+      } else {
+        setSuccess("Account created. Check your email to confirm your account, then log in.");
       }
-
-      const data = await response.json();
-
-      console.log("Account created:", data);
-
-      setSuccess(
-        "Account created successfully! You can now log in."
-      );
 
       // CLEAR FORM
       setName("");
@@ -126,9 +105,9 @@ function Signup() {
       setPassword("");
       setConfirmPassword("");
 
-    } catch (error) {
-      console.error("Signup error:", error);
-      setError("Something went wrong. Please try again.");
+    } catch (signupError) {
+      console.error("Signup error:", signupError);
+      setError(signupError.message || "Something went wrong. Please try again.");
     }
   };
 

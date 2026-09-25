@@ -1,23 +1,33 @@
-import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
-import { useEffect } from "react";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Navigate,
+  useLocation,
+} from "react-router-dom";
+import { useEffect, useState } from "react";
+
 import Home from "./Component/Home";
-import Courses from "./Component/Courses"
+import Courses from "./Component/Courses";
 import Nav from "./Component/Nav";
 import Footer from "./Component/Footer";
-import Projects from "./Component/Projects"
-import ProjectDetails from "./Component/ProjectDetails"
-import About from "./Component/About"
-import Contact from "./Component/Contact"
-import TutorApplication from "./Component/TutorApplication"
-import Live from"./Component/Live"
-import CourseDetails from "./Component/CourseDetails"
-import SessionDetails from "./Component/SessionDetails"
+import Projects from "./Component/Projects";
+import ProjectDetails from "./Component/ProjectDetails";
+import About from "./Component/About";
+import Contact from "./Component/Contact";
+import TutorApplication from "./Component/TutorApplication";
+import Live from "./Component/Live";
+import CourseDetails from "./Component/CourseDetails";
+import SessionDetails from "./Component/SessionDetails";
 import Signup from "../pages/Signup";
-import Login from "../pages/Login"
+import Login from "../pages/Login";
 import Learningpaths from "../pages/Learningpaths";
 import Dashboard from "./Component/Dashboard";
+
 import "./neutral-theme.css";
 import "./layout-spacing.css";
+
+import { supabase } from "./supabaseClient";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -31,38 +41,106 @@ function ScrollToTop() {
 
 function ProtectedRoute({ children }) {
   const location = useLocation();
-  const loggedInUser = localStorage.getItem("loggedInUser");
+  const [session, setSession] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-  if (!loggedInUser) {
+  useEffect(() => {
+    let mounted = true;
+
+    supabase.auth.getSession().then(({ data }) => {
+      if (mounted) {
+        setSession(data.session);
+        setLoading(false);
+      }
+    });
+
+    const { data: authListener } = supabase.auth.onAuthStateChange(
+      (_event, nextSession) => {
+        if (mounted) setSession(nextSession);
+      }
+    );
+
+    return () => {
+      mounted = false;
+      authListener.subscription.unsubscribe();
+    };
+  }, []);
+
+  if (loading) return null;
+
+  if (!session) {
     return <Navigate to="/login" state={{ from: location }} replace />;
   }
 
   return children;
 }
 
-
-
-
-
-
 function App() {
+  // Supabase users
+  const [users, setUsers] = useState([]);
+
+  // Get users from Supabase when App loads
+  useEffect(() => {
+    async function loadUsers() {
+      const { data, error } = await supabase
+        .from("users")
+        .select("*");
+
+      if (error) {
+        console.log("Supabase Error:", error);
+      } else {
+        console.log("Users from Supabase:", data);
+        setUsers(data);
+      }
+    }
+
+    loadUsers();
+  }, []);
+
   return (
     <BrowserRouter>
-    <ScrollToTop />
-    <Nav/>
-   
+      <ScrollToTop />
+
+      <Nav />
+
+      {/* Temporary Supabase test */}
+      <div style={{ padding: "20px" }}>
+        <h2>Supabase Users</h2>
+
+        {users.map((user) => (
+          <p key={user.id}>
+            {user.name} - {user.age} - {user.email}
+          </p>
+        ))}
+      </div>
+
       <Routes>
         <Route path="/" element={<Home />} />
+
         <Route path="/courses" element={<Courses />} />
-        <Route path="/projects" element={<Projects  />} />
-        <Route path="/projects/:projectId" element={<ProjectDetails />} />
+
+        <Route path="/projects" element={<Projects />} />
+
+        <Route
+          path="/projects/:projectId"
+          element={<ProjectDetails />}
+        />
+
         <Route path="/about" element={<About />} />
+
         <Route path="/contact" element={<Contact />} />
+
         <Route path="/apply" element={<TutorApplication />} />
+
         <Route path="/live" element={<Live />} />
-        <Route path="/session/:sessionId" element={<SessionDetails />} />
+
+        <Route
+          path="/session/:sessionId"
+          element={<SessionDetails />}
+        />
 
         <Route path="/login" element={<Login />} />
+
         <Route
           path="/dashboard"
           element={
@@ -71,12 +149,21 @@ function App() {
             </ProtectedRoute>
           }
         />
-        <Route path="/courses/:courseSlug" element={<CourseDetails />} />
-        <Route path="/signup" element={<Signup/>} />
-        <Route path="/learningpaths" element={<Learningpaths/>} />
 
+        <Route
+          path="/courses/:courseSlug"
+          element={<CourseDetails />}
+        />
+
+        <Route path="/signup" element={<Signup />} />
+
+        <Route
+          path="/learningpaths"
+          element={<Learningpaths />}
+        />
       </Routes>
-       <Footer/>
+
+      <Footer />
     </BrowserRouter>
   );
 }
